@@ -16,23 +16,18 @@ if __name__ == '__main__':
 #pe4 1 1 0 0 0 0 0 0 0 0
 
 
-#availability = {"name1": [0,0,0,0,0,0,0,0,0,0,]
-#                "name2": [0,0,0,0,0,0,0,0,0,0,]}
-
 class rota:
 
     def __init__(self,people):
 
         self.people = people #Saves the list of people as a self var.
         self.numPeople = len(people) #Creates a var for number of people in list.
-        self.availability = [ [0] *8] *self.numPeople #Creates a martix of 0s for use in matching algo.
         
-        
-        self.dict = {key: None for key in self.people}
+        self.staffAvail = {key: ([0] * 18) for key in self.people} #Creates a dict to store people and their availability.
         print(self.dict)
         
         
-        print('init ddddddone')
+        print('Initialisation of new rota done!')
 
 
     def printAvailability(self):
