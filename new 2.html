@@ -2,47 +2,683 @@
 <html>
 <head>
 <style>
+body {
+    color: black;
+    font-family: verdana;
+    font-size: 100%;
+}
 table, td, td {
     border: 1px solid black;
     border-collapse: collapse;
+	table-layout:fixed;
 }
 td, td {
-    padding: 5px;
-    text-align: left;    
+    padding: 10px;
+	text-align: center;
+}
+
+#emptyCells {
+    padding: 15px;
+}
+
+#thkUp {
+	border-top-width: thick;
+	padding: 0px;
+}
+
+#smlTxt {
+	font-size: 75%;
 }
 </style>
 </head>
 <body>
 
-<h2>Cell tdat spans two columns:</h2>
+<h2>Lifeguard Rota</h2>
 
-<table style="widtd:100%">
-  <tr>
-    <td colspan="2">NAME</td>
-    <td colspan="2">SHIFT TIME</td>
-	<td>05:30</td>
-	<td>06:00</td>
-	<td>06:30</td>
-	<td>07:00</td>
-	<td>07:30</td>
-	<td>08:00</td>
-	<td>08:30</td>
-	<td>09:00</td>
-	<td>09:30</td>
-	<td>10:00</td>
-	<td>10:30</td>
-	<td>11:00</td>
-	<td>11:30</td>
-	<td>12:00</td>
-	<td>12:30</td>
-	<td>13:00</td>
-	<td>13:30</td>
-	<td>14:00</td>
+<table style="width:100%">
+
+	<tr>
+		<td colspan="4">Date</td>
+		<td colspan="4">	</td>
+		<td colspan="3">DM Early</td>
+		<td colspan="3">	</td>
+		<td colspan="3">	</td>
+		<td colspan="3">GM Initial</td>
+		<td colspan="4">GM Sign</td>
+	</tr>
 	
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
+	<tr>
+		<td colspan="4">Week Day</td>
+		<td colspan="4">	</td>
+		<td colspan="3">DM Late</td>
+		<td colspan="3">	</td>
+		<td colspan="3">	</td>
+		<td colspan="3">	</td>
+		<td colspan="4">	</td>
+	</tr>
+	
+	<tr>
+		<td rowspan="2">Key</td>
+
+		<td colspan="3">P1</td>
+		<td colspan="3">P2</td>
+		<td colspan="3">P3</td>
+		<td colspan="3">P4</td>
+		<td colspan="3">CL = CLEANING</td>
+		<td colspan="3">DS = DRYSIDE DUTIES</td>
+		<td colspan="3">L = LUNCH BREAK</td>		
+		<td colspan="2">T = TRAINING</td>
+	</tr>	
+	
+	<tr>
+		<td colspan="3">CH = COACHING</td>
+		<td colspan="3">IWH = IN WATER HELPER</td>
+		<td colspan="3">RC = RECEPTION</td>
+		<td colspan="3">DM = DM TASK</td>
+		<td colspan="11">	</td>
+	</tr>		
+
+	<div style="text-align:center">
+	
+	<tr>
+		<td colspan="3" id="thkUp">NAME</td>
+		<td colspan="3" id="thkUp">SHIFT TIME</td>
+		<td id="thkUp">05:30</td>
+		<td id="thkUp">06:00</td>
+		<td id="thkUp">06:30</td>
+		<td id="thkUp">07:00</td>
+		<td id="thkUp">07:30</td>
+		<td id="thkUp">08:00</td>
+		<td id="thkUp">08:30</td>
+		<td id="thkUp">09:00</td>
+		<td id="thkUp">09:30</td>
+		<td id="thkUp">10:00</td>
+		<td id="thkUp">10:30</td>
+		<td id="thkUp">11:00</td>
+		<td id="thkUp">11:30</td>
+		<td id="thkUp">12:00</td>
+		<td id="thkUp">12:30</td>
+		<td id="thkUp">13:00</td>
+		<td id="thkUp">13:30</td>
+		<td id="thkUp">14:00</td>
+	</tr>	
+	
+	</div>
+	
+	<tr>
+		<td colspan="3" id="emptyCells"></td>
+		<td colspan="3"></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="3" id="emptyCells"></td>
+		<td colspan="3"></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="3" id="emptyCells"></td>
+		<td colspan="3"></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>	
+	
+	<tr>
+		<td colspan="3" id="emptyCells"></td>
+		<td colspan="3"></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="3" id="emptyCells"></td>
+		<td colspan="3"></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="3" id="emptyCells"></td>
+		<td colspan="3"></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="3" id="emptyCells"></td>
+		<td colspan="3"></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="3" id="emptyCells"></td>
+		<td colspan="3"></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td> 
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+	<tr>
+		<td colspan="3" id="thkUp">NAME</td>
+		<td colspan="3" id="thkUp">SHIFT TIME</td>
+		<td id="thkUp">14:30</td>
+		<td id="thkUp">15:00</td>
+		<td id="thkUp">15:30</td>
+		<td id="thkUp">16:00</td>
+		<td id="thkUp">16:30</td>
+		<td id="thkUp">17:00</td>
+		<td id="thkUp">17:30</td>
+		<td id="thkUp">18:00</td>
+		<td id="thkUp">18:30</td>
+		<td id="thkUp">19:00</td>
+		<td id="thkUp">19:30</td>
+		<td id="thkUp">20:00</td>
+		<td id="thkUp">20:30</td>
+		<td id="thkUp">21:00</td>
+		<td id="thkUp">21:30</td>
+		<td id="thkUp">22:00</td>
+		<td id="thkUp">22:30</td>
+		<td id="thkUp">23:00</td>
+	</tr>
+	
+	<tr>
+		<td colspan="3" id="emptyCells"></td>
+		<td colspan="3"></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="3" id="emptyCells"></td>
+		<td colspan="3"></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="3" id="emptyCells"></td>
+		<td colspan="3"></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>	
+	
+	<tr>
+		<td colspan="3" id="emptyCells"></td>
+		<td colspan="3"></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="3" id="emptyCells"></td>
+		<td colspan="3"></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="3" id="emptyCells"></td>
+		<td colspan="3"></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="3" id="emptyCells"></td>
+		<td colspan="3"></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="3" id="emptyCells"></td>
+		<td colspan="3"></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td> 
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+
+	<tr>
+		<td colspan="6" id="thkUp">Headcount</td>
+		<td id="thkUp">05:30</td>
+		<td id="thkUp">06:00</td>
+		<td id="thkUp">06:30</td>
+		<td id="thkUp">07:00</td>
+		<td id="thkUp">07:30</td>
+		<td id="thkUp">08:00</td>
+		<td id="thkUp">08:30</td>
+		<td id="thkUp">09:00</td>
+		<td id="thkUp">09:30</td>
+		<td id="thkUp">10:00</td>
+		<td id="thkUp">10:30</td>
+		<td id="thkUp">11:00</td>
+		<td id="thkUp">11:30</td>
+		<td id="thkUp">12:00</td>
+		<td id="thkUp">12:30</td>
+		<td id="thkUp">13:00</td>
+		<td id="thkUp">13:30</td>
+		<td id="thkUp">14:00</td>
+	</tr>
+	
+	<tr>
+		<td colspan="6">Main Pool</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td> 
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="6">Learner Pool</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td> 
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="6">Lifeguard Initials</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td> 
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="6" id="thkUp">Headcount</td>
+		<td id="thkUp">14:30</td>
+		<td id="thkUp">15:00</td>
+		<td id="thkUp">15:30</td>
+		<td id="thkUp">16:00</td>
+		<td id="thkUp">16:30</td>
+		<td id="thkUp">17:00</td>
+		<td id="thkUp">17:30</td>
+		<td id="thkUp">18:00</td>
+		<td id="thkUp">18:30</td>
+		<td id="thkUp">19:00</td>
+		<td id="thkUp">19:30</td>
+		<td id="thkUp">20:00</td>
+		<td id="thkUp">20:30</td>
+		<td id="thkUp">21:00</td>
+		<td id="thkUp">21:30</td>
+		<td id="thkUp">22:00</td>
+		<td id="thkUp">22:30</td>
+		<td id="thkUp">23:00</td>
+	</tr>
+	
+	<tr>
+		<td colspan="6">Main Pool</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td> 
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="6">Learner Pool</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td> 
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="6">Lifeguard Initials</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td> 
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+
+	
+	<tr>
+		<td colspan="5" style="padding: 30px;border-top-width: thick;">Extra Comments</td>
+		<td colspan="19" style="border-top-width: thick">	</td>
+	</tr>
+	
 </table>
+</body>
+</html>
