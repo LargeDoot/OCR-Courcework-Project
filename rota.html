@@ -1,74 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-body {
-    color: black;
-    font-family: verdana;
-    font-size: 100%;
-}
-table, td, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-	table-layout:fixed;
-}
-td, td {
-    padding: 10px;
-	text-align: center;
-}
 
-#emptyCells {
-    padding: 15px;
-}
+<link rel="stylesheet" href="style.css">
 
-#thkUp {
-	border-top-width: thick;
-	padding: 0px;
-}
-
-#smlTxt {
-	font-size: 75%;
-}
-
-
-
-/* Style the tab */
-div.tab {
-    overflow: hidden;
-    border: 1px solid #ccc;
-    background-color: #f1f1f1;
-}
-
-/* Style the buttons inside the tab */
-div.tab button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-    font-size: 17px;
-}
-
-/* Change background color of buttons on hover */
-div.tab button:hover {
-    background-color: #ddd;
-}
-
-/* Create an active/current tablink class */
-div.tab button.active {
-    background-color: #ccc;
-}
-
-/* Style the tab content */
-.tabcontent {
-    display: none;
-    padding: 6px 12px;
-    border: 1px solid #ccc;
-    border-top: none;
-}
-</style>
 </head>
 <body>
 
@@ -76,17 +11,12 @@ div.tab button.active {
 
 
 <div class="tab">
-  <button class="tablinks" onclick="openTab(event, 'tab1')">Rota View</button>
-  <button class="tablinks" onclick="openTab(event, 'tab2')">Create View</button>
-  <button class="tablinks" onclick="openTab(event, 'tab3')">Edit View</button>
+  <button  onclick="location.href='rota.html';">Rota View</button>
+  <button class="tablinks" onclick="location.href='create.html'">Create View</button>
+  <button class="tablinks" onclick="location.href='edit.html'">Edit View</button>
 </div>
 
-
-<div id="tab1" class="tabcontent">
-
-
-
-
+<br>
 
 <table style="width:100%">
 
@@ -737,14 +667,6 @@ div.tab button.active {
 
 </div>
 
-<div id="tab2" class="tabcontent">
-
-</div>
-
-<div id="tab3" class="tabcontent">
-  <h3>tab3</h3>
-  <p>example</p> 
-</div>
 
 <script src="javascript.js"></script>
 
