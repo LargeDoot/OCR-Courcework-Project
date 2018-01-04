@@ -6,14 +6,6 @@ Created on 21 Nov 2017
 
 if __name__ == '__main__':
     print("")
-    
-    
-
-#    - - - - - - - - - -
-#pe1 1 0 0 0 0 0 0 0 0 0 
-#pe2 1 0 0 1 0 0 0 0 0 0
-#pe3 1 0 0 0 0 0 0 0 0 0
-#pe4 1 1 0 0 0 0 0 0 0 0
 
 
 class rota:
@@ -23,11 +15,16 @@ class rota:
         self.people = people #Saves the list of people as a self var.
         self.numPeople = len(people) #Creates a var for number of people in list.
         
-        self.staffAvail = {key: ([0] * 18) for key in self.people} #Creates a dict to store people and their availability.
+        self.staffAvail = {key: ([1] * 18) for key in self.people} #Creates a dict to store people and their availability.
+        self.matrix = {key: ([1] * 18) for key in self.people} #Creates a dict to store people and their availability.
+
         print(self.staffAvail)
+        print(self.matrix)
         
         
         print('Initialisation of new rota done!')
+
+
 
 
     def printAvailability(self):
@@ -46,21 +43,41 @@ class rota:
         
     def editAvailability(self):
         '''
-        Allows the editing of each person availability.
+        - Allows the editing of each person availability.
+        - Displays 'self.people', available time slots
+        - Inputs person, time slot to edit, and new value
         '''
         
-        for i in range(self.numPeople):
+        for i in range(self.numPeople): #Loop prints incrementing numbers, each followed by names from people list
             print("{}. {}".format(i+1, self.people[i]))
 
-        person = input("Select person to edit")
+        person = input("Select person to edit") #Inputs person name to edit
         
         
-        print(TIMESLOTS_AM)
-        timeslot = int(input("timeslot to edit:"))
+        print(TIMESLOTS_AM) #Prints available time slots to edit
+        timeslot = int(input("Times lot to edit:")) #Inputs which time slot to edit
         
-        value = input("new value:")
+        value = input("new value:") #Inputs new value for selected person and time slot
         
-        self.staffAvail[person][timeslot] = value
+        self.staffAvail[person][timeslot] = value #Updates value specified above
+        
+        
+        
+               
+    def refreshRota(self):
+        '''
+        - Regenerates the rota if availability has been changed
+        - Creates a new rota if specified by user 
+        '''
+        
+        #Create an initial matching first
+        for i in range(self.numPeople):
+            for people in self.people:
+                if self.staffAvail == 1:
+                    
+                
+                
+                
 
 
 TIMESLOTS_AM = ["0530","0600","0630","0700"]
