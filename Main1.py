@@ -19,13 +19,13 @@ class rota:
         def __init__(self,people):
             
             self.timeSlots = ["0530","0600","0630","0700","0730","0800","0830","0900","0930",
-                              "1000","1030","1100","1130","1200","1230","1300","1330","1400","1430"]
+                              "1000","1030","1100","1130","1200","1230","1300","1330","1400"]
             
             self.people = people #Saves the list of people as a self var.
             self.numPeople = len(people) #Creates a var for number of people in list.
             
-            self.staffAvail = {key: ([1] * 19) for key in self.people} #Creates a dict to store people and their availability.
-            self.matrix = {key: ([0] * 19) for key in self.people} #Creates a dict to store people and their jobs.
+            self.staffAvail = {key: ([1] * 18) for key in self.people} #Creates a dict to store people and their availability.
+            self.matrix = {key: ([""] * 18) for key in self.people} #Creates a dict to store people and their jobs.
             
             print(self.staffAvail)
             print(self.matrix)
@@ -119,15 +119,23 @@ class rota:
 @app.route("/")
 def home():
     
-    global classs
-    classs = rota(["name1","name2"])
+    global rotaInstance
+    rotaInstance = rota(["name1","name2","","","","","",""])
     
     return render_template('index.html')
 
 @app.route("/rota")
 def view_rota():
-    global classs
-    return render_template('rota.html', results = classs.getMatrix()["name1"])
+    global rotaInstance
+    return render_template('rota.html', 
+                           person1 = rotaInstance.getMatrix()["name1"],
+                           person2 = rotaInstance.getMatrix()["name2"],
+                           person3 = rotaInstance.getMatrix()[""],
+                           person4 = rotaInstance.getMatrix()[""],
+                           person5 = rotaInstance.getMatrix()[""],
+                           person6 = rotaInstance.getMatrix()[""],
+                           person7 = rotaInstance.getMatrix()[""],
+                           person8 = rotaInstance.getMatrix()[""])
 
 @app.route("/edit")
 def edit():
@@ -135,8 +143,8 @@ def edit():
 
 @app.route("/create")
 def create():
-    global classs
-    classs.refreshRota()
+    global rotaInstance
+    rotaInstance.refreshRota()
     
     return render_template('create.html')
 
