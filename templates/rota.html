@@ -2,7 +2,7 @@
 <html>
 <head>
 
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="static/style.css">
 
 </head>
 <body>
@@ -11,9 +11,9 @@
 
 
 <div class="tab">
-  <button  onclick="location.href='rota.html';">Rota View</button>
-  <button class="tablinks" onclick="location.href='create.html'">Create View</button>
-  <button class="tablinks" onclick="location.href='edit.html'">Edit View</button>
+  <button class="tablinks" onclick="location.href='/rota'">Rota View</button>
+  <button class="tablinks" onclick="location.href='/create'">Create View</button>
+  <button class="tablinks" onclick="location.href='/edit'">Edit View</button>
 </div>
 
 <br>
@@ -91,24 +91,9 @@
 	<tr>
 		<td colspan="3" id="emptyCells"></td>
 		<td colspan="3"></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td> </td>
-		<td></td>
-		<td></td>
-		<td></td>
+		{% for value in results %}
+			<td> {{ value }} </td>
+		{% endfor %}
 	</tr>
 	
 	<tr>

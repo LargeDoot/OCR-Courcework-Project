@@ -4,9 +4,12 @@ Created on 21 Nov 2017
 @author: Ethan
 '''
 from symbol import except_clause
+from builtins import enumerate
+from flask import *
+from flask.templating import render_template
 
-if __name__ == '__main__':
-    print("")
+
+app = Flask(__name__)
 
 
 class rota:
@@ -38,9 +41,9 @@ class rota:
          - Their availability in list 'availability'
         '''        
         
-        for x in range(self.numPeople): #Loop round and print every name and availability
-            print('\n' + self.people[x], end="\t") #Names
-            print(self.staffAvail[self.people[x]], end="\t") #Availability
+        for person in self.people: #Loop round and print every name and availability
+            print('\n' + person, end="\t") #Names
+            print(self.staffAvail[person], end="\t") #Availability
 
         print("\n")
         
@@ -82,23 +85,58 @@ class rota:
         for people in self.people:
             
             for i in range( len(self.timeSlots)):  
+                
                 if self.staffAvail[people][i] == 1:
                     self.matrix[people][i] = self.poolPos[(count + i) % 4]
                     
                 else:
                     self.matrix[people][i] = "CL"
                     
-            count += 1        
+            count += 1       
 
 
-        for matrix in self.matrix:
-                    
-            print(self.matrix[matrix])
 
+
+        
+    def printMatrix(self):
+        
+        for person in self.matrix:
             
+            print(person, end="\t")        
+            print(self.matrix[person])
             
-rota1 = rota(["john", "lewis", "bob", "wayne"])
-rota1.printAvailability()
-rota1.editAvailability()
-rota1.printAvailability()
-rota1.refreshRota()
+        
+    def getMatrix(self):
+        
+        return self.matrix       
+
+@app.route("/")
+def home():
+    
+    session['class']= rota(["john", "lewis", "bob", "wayne","test"])
+    
+    
+    return render_template('index.html')
+
+@app.route("/rota")
+def rota():
+    return render_template('rota.html', result = session['class'].getMatrix["bob"])
+
+@app.route("/edit")
+def edit():
+    return render_template('edit.html')
+
+@app.route("/create")
+def create():
+    return render_template('create.html')
+            
+rota1 = rota(["john", "lewis", "bob", "wayne","test"])
+#rota1.printAvailability()
+#rota1.editAvailability()
+#rota1.printAvailability()
+#rota1.refreshRota()
+#rota1.printMatrix()
+
+if __name__ == '__main__':
+    app.secret_key = 123
+    app.run(debug=True,port=69)
