@@ -1,14 +1,14 @@
-body {
+#body {
     color: black;
     font-family: verdana;
     font-size: 100%;
 }
-table, td, td {
+#table, #td, #td {
     border: 1px solid black;
     border-collapse: collapse;
 	table-layout:fixed;
 }
-td, td {
+#td, #td {
     padding: 10px;
 	text-align: center;
 }
@@ -32,14 +32,14 @@ td, td {
 
 
 /* Tab styles */
-div.tab {
+#div.tab {
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
 }
 
 /* Tab button styles */
-div.tab button {
+#div.tab button {
     background-color: inherit;
     float: left;
     border: none;
