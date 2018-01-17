@@ -135,13 +135,18 @@ def view_rota():
 def edit():
     return render_template('edit.html')
 
-@app.route("/create")
+@app.route("/create", methods=['GET', 'POST'])
 def create():
     global rotaInstance
     rotaInstance.refreshRota()
     
+    if request.method == 'POST':
+        print("person1")
+        print(request.form.getlist('person1'))
+        print("person2")
+        print(request.form.getlist('person2'))
+    
     return render_template('create.html')
-
 
 
 
