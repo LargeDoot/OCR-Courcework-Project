@@ -84,14 +84,14 @@ class rota:
             #Create an initial matching first
             count = 0
     
-            for people in self.people:
+            for people in self.people: #Loop through list of people on a shift
                 
-                for i in range( len(self.timeSlots)):  
+                for i in range( len(self.timeSlots)):   #Loop through each persons time slots (i.e. 06:00->14:30)
                     
-                    if self.staffAvail[people][i] == 1:
-                        self.matrix[people][i] = self.poolPos[(count + i) % 4]
+                    if self.staffAvail[people][i] == 1: #Checks the current time slot and if the person is available
+                        self.matrix[people][i] = self.poolPos[(count + i) % 4] #Loops through a 'circular' list of positions and assigns them
                         
-                    else:
+                    else: #If they arent available then assign "CL"
                         self.matrix[people][i] = "CL"
                         
                 count += 1       
@@ -102,16 +102,19 @@ class rota:
             
         def printMatrix(self):
             
-            for person in self.matrix:
+            for person in self.matrix: #Loops through dictionary fo names
                 
-                print(person, end="\t")        
-                print(self.matrix[person])
+                print(person, end="\t") #Prints each persons name
+                print(self.matrix[person]) #Prints list of availability of that person
                 
             
         def getMatrix(self):
             
-            return self.matrix
+            return self.matrix   #returns the matrix
         
+        def getPeople(self):
+            
+            return self.people  #returns list of peoples names   
 
 
 
@@ -141,13 +144,12 @@ def create():
     rotaInstance.refreshRota()
     
     if request.method == 'POST':
-        print("person1")
-        print(request.form.getlist('person1'))
-        print("person2")
-        print(request.form.getlist('person2'))
+        
+        for person in rotaInstance.getPeople():
+            print(person)
+            print(request.form.getlist(person))
     
-    return render_template('create.html')
-
+    return render_template('create.html', people = rotaInstance.getPeople())
 
 
 if __name__ == '__main__':

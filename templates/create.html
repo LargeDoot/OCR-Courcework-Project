@@ -4,6 +4,9 @@
 
 <link rel="stylesheet" href="static/style.css">
 
+{% set timesEarly = ["05:30","06:00","06:30","07:00","07:30","08:00","08:30","09:00","09:30",
+                              "10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00"] %}
+
 </head>
 <body>
 
@@ -18,23 +21,308 @@
 
 <h1>Creation Screen</h1>
 
-
-
 <form method="post">
 
-	<input type="checkbox" name="person1" value="06:00"/>
-	<input type="checkbox" name="person1" value="06:30"/>
-	<input type="checkbox" name="person1" value="07:00"/>
+<table style="width:100%">
+
+	<tr>
+		<td colspan="4">Date</td>
+		<td colspan="4">	</td>
+		<td colspan="3">DM Early</td>
+		<td colspan="3">	</td>
+		<td colspan="3">	</td>
+		<td colspan="3">GM Initial</td>
+		<td colspan="4">GM Sign</td>
+	</tr>
 	
-	<br>
+	<tr>
+		<td colspan="4">Week Day</td>
+		<td colspan="4">	</td>
+		<td colspan="3">DM Late</td>
+		<td colspan="3">	</td>
+		<td colspan="3">	</td>
+		<td colspan="3">	</td>
+		<td colspan="4">	</td>
+	</tr>
 	
-	<input type="checkbox" name="person2" value="06:00"/>
-	<input type="checkbox" name="person2" value="06:30"/>
-	<input type="checkbox" name="person2" value="07:00"/>
+	<tr>
+		<td>Key</td>
+
+		<td colspan="3">P1</td>
+		<td colspan="3">P2</td>
+		<td colspan="3">P3</td>
+		<td colspan="3">P4</td>
+		<td colspan="3">CL = CLEANING</td>
+		<td colspan="3">L = LUNCH BREAK</td>
+		<td colspan="3">DM = DM TASK</td>		
+	</tr>	
 	
-	<input type="submit"/>
+
 	
+	<tr> <!-- LOOP FOR DISPLAYING ALL TIMES AM -->
+		<td colspan="3" id="thkUp">NAME</td>
+		<td colspan="3" id="thkUp">SHIFT TIME</td>
+		
+		{% for i in range(18) %}
+		
+			<td id="thkUp">{{ timesEarly[i] }}</td>
+			
+		{% endfor %}
+	</tr>	
+	
+
+	{% for name in people %} <!-- LOOP FOR DISPLAYING ALL TICKBOXES AM -->
+		<tr id="normalCells">
+			<td colspan="3">
+			
+				<input type="text"/>
+			
+			</td> 
+			<td colspan="3">
+			
+				<select name="test">
+				{% for option in timesEarly[i] %}
+					<option>meme</option>
+					<option value="test">meme</option>
+				{% endfor %}
+					
+				</select>
+			</td>
+			
+			{% for i in range(18) %}
+					
+				<td>
+					
+					<input type="checkbox" name="{{ name }}" value="{{ i }}">{{ name }}
+					
+				</td>
+				
+			{% endfor %}
+			
+		</tr>
+	
+	{% endfor %}
+	
+	
+	<tr class="thickUp">
+		<td colspan="3" id="thkUp">NAME</td>
+		<td colspan="3" id="thkUp">SHIFT TIME</td>
+		{% for i in range(18) %}
+		
+			<td id="thkUp">{{ timesEarly[i] }}</td>
+			
+		{% endfor %}
+	</tr>
+	
+	{% for name in range(4) %}
+		<tr id="normalCells">
+			<td colspan="3">{{ name }}</td> 
+			<td colspan="3"></td>
+			
+			{% for i in range(18) %}
+					
+				<td></td>
+				
+			{% endfor %}
+			
+		
+		
+		</tr>
+	
+	{% endfor %}
+
+	<tr class="thickUp">
+		<td colspan="6" id="thkUp">Headcount</td>
+		<td>14:30</td>
+		<td>15:00</td>
+		<td>15:30</td>
+		<td>16:00</td>
+		<td>16:30</td>
+		<td>17:00</td>
+		<td>17:30</td>
+		<td>18:00</td>
+		<td>18:30</td>
+		<td>19:00</td>
+		<td>19:30</td>
+		<td>20:00</td>
+		<td>20:30</td>
+		<td>21:00</td>
+		<td>21:30</td>
+		<td>22:00</td>
+		<td>22:30</td>
+		<td>23:00</td>
+	</tr>
+	
+	<tr>
+		<td colspan="6">Main Pool</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td> 
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="6">Learner Pool</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td> 
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="6">Lifeguard Initials</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td> 
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr class="thickUp">
+		<td colspan="6" id="thkUp">Headcount</td>
+		<td>14:30</td>
+		<td>15:00</td>
+		<td>15:30</td>
+		<td>16:00</td>
+		<td>16:30</td>
+		<td>17:00</td>
+		<td>17:30</td>
+		<td>18:00</td>
+		<td>18:30</td>
+		<td>19:00</td>
+		<td>19:30</td>
+		<td>20:00</td>
+		<td>20:30</td>
+		<td>21:00</td>
+		<td>21:30</td>
+		<td>22:00</td>
+		<td>22:30</td>
+		<td>23:00</td>
+	</tr>
+	
+	<tr>
+		<td colspan="6">Main Pool</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td> 
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="6">Learner Pool</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td> 
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td colspan="6">Lifeguard Initials</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td> 
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+
+	
+	<tr>
+		<td colspan="5" style="padding: 30px;border-top-width: thick;">Extra Comments</td>
+		<td colspan="19" style="border-top-width: thick">	</td>
+	</tr>
+
+	
+</table>
+
+<input type="submit"/>
+
 </form>
+
+<br><br><br><br><br><br>
+
 
 </body>
 </html>
