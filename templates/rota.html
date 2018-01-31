@@ -1,20 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-
-<link rel="stylesheet" href="static/style.css">
-
-</head>
-<body>
-
-<h2>Lifeguard Rota</h2>
-
-
-<div class="tab">
-  <button class="tablinks" onclick="location.href='/rota'">Rota View</button>
-  <button class="tablinks" onclick="location.href='/create'">Create View</button>
-  <button class="tablinks" onclick="location.href='/edit'">Edit View</button>
-</div>
+{% extends "base.html" %}
 
 <br>
 
@@ -41,25 +25,17 @@
 	</tr>
 	
 	<tr>
-		<td rowspan="2">Key</td>
+		<td>Key</td>
 
 		<td colspan="3">P1</td>
 		<td colspan="3">P2</td>
 		<td colspan="3">P3</td>
 		<td colspan="3">P4</td>
 		<td colspan="3">CL = CLEANING</td>
-		<td colspan="3">DS = DRYSIDE DUTIES</td>
-		<td colspan="3">L = LUNCH BREAK</td>		
-		<td colspan="2">T = TRAINING</td>
+		<td colspan="3">L = LUNCH BREAK</td>
+		<td colspan="3">DM = DM TASK</td>		
 	</tr>	
 	
-	<tr>
-		<td colspan="3">CH = COACHING</td>
-		<td colspan="3">IWH = IN WATER HELPER</td>
-		<td colspan="3">RC = RECEPTION</td>
-		<td colspan="3">DM = DM TASK</td>
-		<td colspan="11">	</td>
-	</tr>		
 
 	<div style="text-align:center">
 	
@@ -87,298 +63,80 @@
 	</tr>	
 	
 	</div>
-	
-	<tr>
-		<td colspan="3" id="emptyCells"></td>
-		<td colspan="3"></td>
-		{% for value in person1 %}
-			<td id='normalCell'> {{ value }} </td>
-		{% endfor %}
-	</tr>
-	
-	<tr>
-		<td colspan="3" id="emptyCells"></td>
-		<td colspan="3"></td>
-		{% for value in person2 %}
-			<td id='normalCell'> {{ value }} </td>
-		{% endfor %}
-	</tr>
-	
-	<tr>
-		<td colspan="3" id="emptyCells"></td>
-		<td colspan="3"></td>
-		{% for value in person3 %}
-			<td id='normalCell'> {{ value }} </td>
-		{% endfor %}
-	</tr>	
-	
-	<tr>
-		<td colspan="3" id="emptyCells"></td>
-		<td colspan="3"></td>
-		{% for value in person4 %}
-			<td id='normalCell'> {{ value }} </td>
-		{% endfor %}
-	</tr>
-	
-	<tr>
-		<td colspan="3" id="emptyCells"></td>
-		<td colspan="3"></td>
-		{% for value in person5 %}
-			<td id='normalCell'> {{ value }} </td>
-		{% endfor %}
-	</tr>
-	
-	<tr>
-		<td colspan="3" id="emptyCells"></td>
-		<td colspan="3"></td>
-		{% for value in person6 %}
-			<td id='normalCell'> {{ value }} </td>
-		{% endfor %}
-	</tr>
-	
-	<tr>
-		<td colspan="3" id="emptyCells"></td>
-		<td colspan="3"></td>
-		{% for value in person7 %}
-			<td id='normalCell'> {{ value }} </td>
-		{% endfor %}
-	</tr>
-	
-	<tr>
-		<td colspan="3" id="emptyCells"></td>
-		<td colspan="3"></td>
-		{% for value in person8 %}
-			<td id='normalCell'> {{ value }} </td>
-		{% endfor %}
-	</tr>
 
-	<tr>
-		<td colspan="3" id="thkUp">NAME</td>
-		<td colspan="3" id="thkUp">SHIFT TIME</td>
-		<td id="thkUp">14:30</td>
-		<td id="thkUp">15:00</td>
-		<td id="thkUp">15:30</td>
-		<td id="thkUp">16:00</td>
-		<td id="thkUp">16:30</td>
-		<td id="thkUp">17:00</td>
-		<td id="thkUp">17:30</td>
-		<td id="thkUp">18:00</td>
-		<td id="thkUp">18:30</td>
-		<td id="thkUp">19:00</td>
-		<td id="thkUp">19:30</td>
-		<td id="thkUp">20:00</td>
-		<td id="thkUp">20:30</td>
-		<td id="thkUp">21:00</td>
-		<td id="thkUp">21:30</td>
-		<td id="thkUp">22:00</td>
-		<td id="thkUp">22:30</td>
-		<td id="thkUp">23:00</td>
+	{% for key, value in rotaList.items() %}
+		<tr id="normalCells">
+			<td colspan="3">{{ key }}</td> 
+			<td colspan="3"></td>
+				
+			{% for pos in value %}
+				<td> {{ pos }} </td>
+				
+			{% endfor %}
+		
+		
+		</tr>
+	
+	{% endfor %}
+	
+	<tr class="thickUp">
+		<td colspan="3">NAME</td>
+		<td colspan="3">SHIFT TIME</td>
+		<td>14:30</td>
+		<td>15:00</td>
+		<td>15:30</td>
+		<td>16:00</td>
+		<td>16:30</td>
+		<td>17:00</td>
+		<td>17:30</td>
+		<td>18:00</td>
+		<td>18:30</td>
+		<td>19:00</td>
+		<td>19:30</td>
+		<td>20:00</td>
+		<td>20:30</td>
+		<td>21:00</td>
+		<td>21:30</td>
+		<td>22:00</td>
+		<td>22:30</td>
+		<td>23:00</td>
 	</tr>
 	
-	<tr>
-		<td colspan="3" id="emptyCells"></td>
-		<td colspan="3"></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
+	{% for key, value in rotaList.items() %}
+		<tr id="normalCells">
+			<td colspan="3">{{ key }}</td> 
+			<td colspan="3"></td>
+				
+			{% for pos in value %}
+				<td> {{ pos }} </td>
+				
+			{% endfor %}
+		
+		
+		</tr>
 	
-	<tr>
-		<td colspan="3" id="emptyCells"></td>
-		<td colspan="3"></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-	
-	<tr>
-		<td colspan="3" id="emptyCells"></td>
-		<td colspan="3"></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>	
-	
-	<tr>
-		<td colspan="3" id="emptyCells"></td>
-		<td colspan="3"></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-	
-	<tr>
-		<td colspan="3" id="emptyCells"></td>
-		<td colspan="3"></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-	
-	<tr>
-		<td colspan="3" id="emptyCells"></td>
-		<td colspan="3"></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-	
-	<tr>
-		<td colspan="3" id="emptyCells"></td>
-		<td colspan="3"></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-	
-	<tr>
-		<td colspan="3" id="emptyCells"></td>
-		<td colspan="3"></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td> 
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
+	{% endfor %}
 
-	<tr>
+	<tr class="thickUp">
 		<td colspan="6" id="thkUp">Headcount</td>
-		<td id="thkUp">05:30</td>
-		<td id="thkUp">06:00</td>
-		<td id="thkUp">06:30</td>
-		<td id="thkUp">07:00</td>
-		<td id="thkUp">07:30</td>
-		<td id="thkUp">08:00</td>
-		<td id="thkUp">08:30</td>
-		<td id="thkUp">09:00</td>
-		<td id="thkUp">09:30</td>
-		<td id="thkUp">10:00</td>
-		<td id="thkUp">10:30</td>
-		<td id="thkUp">11:00</td>
-		<td id="thkUp">11:30</td>
-		<td id="thkUp">12:00</td>
-		<td id="thkUp">12:30</td>
-		<td id="thkUp">13:00</td>
-		<td id="thkUp">13:30</td>
-		<td id="thkUp">14:00</td>
+		<td>14:30</td>
+		<td>15:00</td>
+		<td>15:30</td>
+		<td>16:00</td>
+		<td>16:30</td>
+		<td>17:00</td>
+		<td>17:30</td>
+		<td>18:00</td>
+		<td>18:30</td>
+		<td>19:00</td>
+		<td>19:30</td>
+		<td>20:00</td>
+		<td>20:30</td>
+		<td>21:00</td>
+		<td>21:30</td>
+		<td>22:00</td>
+		<td>22:30</td>
+		<td>23:00</td>
 	</tr>
 	
 	<tr>
@@ -447,26 +205,26 @@
 		<td></td>
 	</tr>
 	
-	<tr>
+	<tr class="thickUp">
 		<td colspan="6" id="thkUp">Headcount</td>
-		<td id="thkUp">14:30</td>
-		<td id="thkUp">15:00</td>
-		<td id="thkUp">15:30</td>
-		<td id="thkUp">16:00</td>
-		<td id="thkUp">16:30</td>
-		<td id="thkUp">17:00</td>
-		<td id="thkUp">17:30</td>
-		<td id="thkUp">18:00</td>
-		<td id="thkUp">18:30</td>
-		<td id="thkUp">19:00</td>
-		<td id="thkUp">19:30</td>
-		<td id="thkUp">20:00</td>
-		<td id="thkUp">20:30</td>
-		<td id="thkUp">21:00</td>
-		<td id="thkUp">21:30</td>
-		<td id="thkUp">22:00</td>
-		<td id="thkUp">22:30</td>
-		<td id="thkUp">23:00</td>
+		<td>14:30</td>
+		<td>15:00</td>
+		<td>15:30</td>
+		<td>16:00</td>
+		<td>16:30</td>
+		<td>17:00</td>
+		<td>17:30</td>
+		<td>18:00</td>
+		<td>18:30</td>
+		<td>19:00</td>
+		<td>19:30</td>
+		<td>20:00</td>
+		<td>20:30</td>
+		<td>21:00</td>
+		<td>21:30</td>
+		<td>22:00</td>
+		<td>22:30</td>
+		<td>23:00</td>
 	</tr>
 	
 	<tr>
@@ -548,8 +306,3 @@
 </div>
 
 
-<script src="static/javascript.js"></script>
-
-
-</body>
-</html>

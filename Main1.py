@@ -120,22 +120,16 @@ class rota:
 def home():
     
     global rotaInstance
-    rotaInstance = rota(["name1","name2","","","","","",""])
+    rotaInstance = rota(["name1","name2"])
     
     return render_template('index.html')
 
 @app.route("/rota")
 def view_rota():
     global rotaInstance
-    return render_template('rota.html', 
-                           person1 = rotaInstance.getMatrix()["name1"],
-                           person2 = rotaInstance.getMatrix()["name2"],
-                           person3 = rotaInstance.getMatrix()[""],
-                           person4 = rotaInstance.getMatrix()[""],
-                           person5 = rotaInstance.getMatrix()[""],
-                           person6 = rotaInstance.getMatrix()[""],
-                           person7 = rotaInstance.getMatrix()[""],
-                           person8 = rotaInstance.getMatrix()[""])
+    print(rotaInstance.getMatrix())
+    return render_template('rota.html', rotaList = rotaInstance.getMatrix())
+
 
 @app.route("/edit")
 def edit():

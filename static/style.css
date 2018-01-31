@@ -3,13 +3,13 @@ body {
     font-family: verdana;
     font-size: 100%;
 }
-table, td, td {
+table, td {
     border: 1px solid black;
     border-collapse: collapse;
 	table-layout:fixed;
 }
-td, td {
-    padding: 10px;
+td {
+    padding: 5px;
 	text-align: center;
 }
 
@@ -26,19 +26,20 @@ td, td {
 	font-size: 75%;
 }
 
-#normalCell {
+.thickUp {
+    border-top: 5px solid black;
 	padding: 0px;
 }
 
 
-/* Tab styles */
+/* Style the tabs */
 div.tab {
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
 }
 
-/* Tab button styles */
+/* Style the buttons inside the tabs */
 div.tab button {
     background-color: inherit;
     float: left;
@@ -50,17 +51,17 @@ div.tab button {
     font-size: 17px;
 }
 
-/* button hover styles */
+/* Change background color of buttons on hover */
 div.tab button:hover {
     background-color: #ddd;
 }
 
-/* create an active/current tablink class */
+/* Create an active/current tablink class */
 div.tab button.active {
     background-color: #ccc;
 }
 
-/* tabcontent style */
+/* Style the tab content */
 .tabcontent {
     display: none;
     padding: 6px 12px;

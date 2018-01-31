@@ -110,17 +110,14 @@ class rota:
         
         return self.matrix       
 
+
 @app.route("/")
+@app.route("/rota")
 def home():
     
     session['class']= rota(["john", "lewis", "bob", "wayne","test"])
     
-    
-    return render_template('index.html')
-
-@app.route("/rota")
-def rota():
-    return render_template('rota.html', result = session['class'].getMatrix["bob"])
+    return render_template('rota.html', result = session['class'].getMatrix()["bob"])
 
 @app.route("/edit")
 def edit():
@@ -131,6 +128,7 @@ def create():
     return render_template('create.html')
             
 rota1 = rota(["john", "lewis", "bob", "wayne","test"])
+
 #rota1.printAvailability()
 #rota1.editAvailability()
 #rota1.printAvailability()
