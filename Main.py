@@ -133,7 +133,7 @@ rota1 = rota(["john", "lewis", "bob", "wayne","test"])
 #rota1.editAvailability()
 #rota1.printAvailability()
 #rota1.refreshRota()
-#rota1.printMatrix()
+#rota1.printMatrix())
 
 if __name__ == '__main__':
     app.secret_key = 123
