@@ -24,11 +24,10 @@ class rota:
             self.people = people #Saves the list of people as a self var.
             self.numPeople = len(people) #Creates a var for number of people in list.
             
-            self.staffAvail = {key: ([1] * 18) for key in self.people} #Creates a dict to store people and their availability.
+            self.delAvailability() #Creates a dict to store people and their availability.
             self.matrix = {key: ([""] * 18) for key in self.people} #Creates a dict to store people and their jobs.
-            
-            print(self.staffAvail)
-            print(self.matrix)
+            self.staffPosCount = {key: (0) for key in self.people}
+
             
             
             print('Initialisation of new rota done!')
@@ -50,26 +49,16 @@ class rota:
             print("\n")
             
             
-        def editAvailability(self):
+        def editAvailability(self, person, editList):
             '''
             - Allows the editing of each person availability.
-            - Displays 'self.people', available time slots
-            - Inputs person, time slot to edit, and new value
+            - Takes a list containing numbers 0-15 of which availability needs to be removed for
+            - ie parse list [0, 1] to remove availability for 0530 and 0600
             '''
             
-            for i in range(self.numPeople): #Loop prints incrementing numbers, each followed by names from people list
-                print("{}. {}".format(i+1, self.people[i]))
-    
-            person = input("Select person to edit") #Inputs person name to edit
-            
-            
-            print(self.timeSlots) #Prints available time slots to edit
-            timeslot = int(input("Times lot to edit:")) #Inputs which time slot to edit
-            
-            value = input("new value:") #Inputs new value for selected person and time slot
-            
-            self.staffAvail[person][timeslot] = value #Updates value specified above
-            
+            for timeslot in editList: #Loops through editList parsed to function
+                self.staffAvail[person][int(timeslot)] = 0 #Updates value specified above
+                
             
             
                    
@@ -82,22 +71,67 @@ class rota:
             self.poolPos = ["P1","P2","P3","CL"] #Create a temporary list for storing remaining positions to be filled
             print(self.poolPos)
             #Create an initial matching first
-            count = 0
-    
-            for people in self.people: #Loop through list of people on a shift
-                
-                for i in range( len(self.timeSlots)):   #Loop through each persons time slots (i.e. 06:00->14:30)
+
+
+            for count, people in enumerate(self.people): #Loop through list of people on a shift, enumerate used to save using a count variable
+
+                for i in range(len(self.timeSlots)):   #Loop through each persons time slots (i.e. 06:00->14:30)
                     
                     if self.staffAvail[people][i] == 1: #Checks the current time slot and if the person is available
                         self.matrix[people][i] = self.poolPos[(count + i) % 4] #Loops through a 'circular' list of positions and assigns them
                         
-                    else: #If they arent available then assign "CL"
+                    else: #If they aren't available then assign "CL"
                         self.matrix[people][i] = "CL"
                         
-                count += 1       
+
+            print("Initial matrix created successfully, improving...")
+            self.poolPos = ["P1","P2","P3"]
+            
+            for i in range(len(self.timeSlots)): #Loops through each time slot
+                posFilled = [] #Creates a temporary list for storing positions filled on each cycle
+                staffFilled = []
+                missingItems = []
+                
+                for people in self.people: #Loops through each row of the current time slot
+                    
+                    if self.matrix[people][i] in self.poolPos:
+                        print("found", self.matrix[people][i], "at", i)
+                        posFilled.append(self.matrix[people][i])
+                        staffFilled.append(people)
+                        
+                
+                if set(posFilled) == set(self.poolPos): #Compares the two lists regardless of the order they are in  using 'set'
+                    print('all positions filled')
+                    
+                    
+                    self.incrementPosCount(staffFilled)
+                    print(self.staffPosCount)
+                    
+                else:
+                    missingItems = set(self.poolPos)^set(posFilled)      
+                    print('Items missing: {}'.format(missingItems))
+                    
+                    for people in self.people:
+                        print(self.matrix[people][i], self.staffAvail[people][i])
+                        if self.matrix[people][i] == "CL" and self.staffAvail[people][i] == 1:
+                            self.matrix[people][i] = missingItems.pop()
+                            
+                            
+                for person in self.people:
+                    if self.staffPosCount[person] <= 3:
+                        self.staffPosCount[person] = 0
+                        try:
+                            self.staffAvail[person][i+1] = 0
+                        except IndexError:
+                            False
+                               
+                    
     
     
-    
+        def incrementPosCount(self, staff):
+            
+            for person in staff:
+                self.staffPosCount[person] += 1
     
             
         def printMatrix(self):
@@ -115,20 +149,30 @@ class rota:
         def getPeople(self):
             
             return self.people  #returns list of peoples names   
-
+        
+        def delAvailability(self):
+            
+            self.staffAvail = {key: ([1] * 18) for key in self.people}
+            return True
 
 
 
 @app.route("/")
 def home():
+    '''
+    Code for the index page for the system
+    '''
     
     global rotaInstance
-    rotaInstance = rota(["name1","name2"])
+    rotaInstance = rota(["name1","name2","name3","name4"])
     
     return render_template('index.html')
 
 @app.route("/rota")
 def view_rota():
+    '''
+    Code for the viewing screen, where the matrix as it is will be displayed in full.
+    '''
     global rotaInstance
     print(rotaInstance.getMatrix())
     return render_template('rota.html', rotaList = rotaInstance.getMatrix())
@@ -136,19 +180,39 @@ def view_rota():
 
 @app.route("/edit")
 def edit():
+    '''
+    Code or editing screen where matrix will be available to edit manually.
+    '''
     return render_template('edit.html')
 
 @app.route("/create", methods=['GET', 'POST'])
 def create():
+    '''
+    Code for the creation screen that will mainly take data from a html form and use this with the 
+    rota class to generate a new rota.
+    '''
     global rotaInstance
-    rotaInstance.refreshRota()
+    rotaInstance.delAvailability()
     
     if request.method == 'POST':
+        peopleList = []
+        
+        #Import data from form, and assign data to variables 
+        for i in range(1, len(rotaInstance.getPeople() ) ): #Loops from i=1 to the length of the list of people 
+            peopleList.append( request.form[str(i)] ) #Adds each name to a list, will be used in displaying matrix
+            
+            print("***", request.form[str(i)]) #Request data from text forms that should contain names of people
+
+                    
+        print(peopleList)
         
         for person in rotaInstance.getPeople():
             print(person)
             print(request.form.getlist(person))
-    
+            rotaInstance.editAvailability(person, request.form.getlist(person))
+            
+        rotaInstance.refreshRota()
+        
     return render_template('create.html', people = rotaInstance.getPeople())
 
 
