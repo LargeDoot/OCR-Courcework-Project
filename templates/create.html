@@ -75,10 +75,11 @@
 			<td colspan="3">
 			
 				<select name="test">
-				{% for option in timesEarly[i] %}
-					<option>meme</option>
-					<option value="test">meme</option>
+					<option>test</option>
+				{% for i in range(10) %}
+					<option>{{ timesEarly[i] }}</option>
 				{% endfor %}
+					<option>test3</option>
 					
 				</select>
 			</td>

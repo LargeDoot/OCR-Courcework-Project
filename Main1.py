@@ -110,11 +110,9 @@ class rota:
                 else:
                     missingItems = set(self.poolPos)^set(posFilled)      
                     print('Items missing: {}'.format(missingItems))
+                    self.completeMissingItems(missingItems, i)
+                            
                     
-                    for people in self.people:
-                        print(self.matrix[people][i], self.staffAvail[people][i])
-                        if self.matrix[people][i] == "CL" and self.staffAvail[people][i] == 1:
-                            self.matrix[people][i] = missingItems.pop()
                             
                             
                 for person in self.people:
@@ -125,8 +123,14 @@ class rota:
                         except IndexError:
                             False
                                
+        def completeMissingItems(self, missingItems, i):            
+            
+            for people in self.people:
+                #print(self.matrix[people][i], self.staffAvail[people][i])
+                        
+                if self.matrix[people][i] == "CL" and self.staffAvail[people][i] == 1:
+                    self.matrix[people][i] = missingItems.pop()
                     
-    
     
         def incrementPosCount(self, staff):
             
@@ -154,6 +158,11 @@ class rota:
             
             self.staffAvail = {key: ([1] * 18) for key in self.people}
             return True
+        
+        def changeNames(self, staff):
+            
+            self.people = staff
+            self.__init__(staff)
 
 
 
@@ -198,13 +207,14 @@ def create():
         peopleList = []
         
         #Import data from form, and assign data to variables 
-        for i in range(1, len(rotaInstance.getPeople() ) ): #Loops from i=1 to the length of the list of people 
+        for i in range(1, len(rotaInstance.getPeople()  ) + 1 ): #Loops from i=1 to the length of the list of people 
             peopleList.append( request.form[str(i)] ) #Adds each name to a list, will be used in displaying matrix
             
             print("***", request.form[str(i)]) #Request data from text forms that should contain names of people
 
                     
         print(peopleList)
+        rotaInstance.changeNames(peopleList)
         
         for person in rotaInstance.getPeople():
             print(person)
